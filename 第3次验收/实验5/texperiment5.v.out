@@ -1,0 +1,69 @@
+#! /opt/homebrew/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x158705700 .scope module, "tb_test5" "tb_test5" 2 6;
+ .timescale -9 -12;
+P_0x1587075a0 .param/l "PERIOD" 0 2 9, +C4<00000000000000000000000000001010>;
+v0x15871bd50_0 .var "A", 0 0;
+v0x15871bdf0_0 .var "D", 1 0;
+v0x15871bea0_0 .net "Y", 0 0, L_0x15871c3a0;  1 drivers
+S_0x158705870 .scope module, "u_test5" "test5" 2 19, 3 1 0, S_0x158705700;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 2 "D";
+    .port_info 2 /OUTPUT 1 "Y";
+L_0x15871bf70 .functor NOT 1, v0x15871bd50_0, C4<0>, C4<0>, C4<0>;
+L_0x15871c120 .functor AND 1, L_0x15871bf70, L_0x15871c040, C4<1>, C4<1>;
+L_0x15871c2d0 .functor AND 1, v0x15871bd50_0, L_0x15871c230, C4<1>, C4<1>;
+v0x158706640_0 .net "A", 0 0, v0x15871bd50_0;  1 drivers
+v0x15871b810_0 .net "D", 1 0, v0x15871bdf0_0;  1 drivers
+v0x15871b8c0_0 .net "Y", 0 0, L_0x15871c3a0;  alias, 1 drivers
+v0x15871b970_0 .net *"_ivl_0", 0 0, L_0x15871bf70;  1 drivers
+v0x15871ba20_0 .net *"_ivl_3", 0 0, L_0x15871c040;  1 drivers
+v0x15871bb10_0 .net *"_ivl_4", 0 0, L_0x15871c120;  1 drivers
+v0x15871bbc0_0 .net *"_ivl_7", 0 0, L_0x15871c230;  1 drivers
+v0x15871bc70_0 .net *"_ivl_8", 0 0, L_0x15871c2d0;  1 drivers
+L_0x15871c040 .part v0x15871bdf0_0, 0, 1;
+L_0x15871c230 .part v0x15871bdf0_0, 1, 1;
+L_0x15871c3a0 .arith/sum 1, L_0x15871c120, L_0x15871c2d0;
+    .scope S_0x158705700;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x15871bd50_0, 0, 1;
+    %pushi/vec4 0, 0, 2;
+    %store/vec4 v0x15871bdf0_0, 0, 2;
+    %end;
+    .thread T_0;
+    .scope S_0x158705700;
+T_1 ;
+    %vpi_call 2 28 "$dumpfile", "experiment5_wave.vcd" {0 0 0};
+    %vpi_call 2 29 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x158705700 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x158705700;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x15871bd50_0, 0, 1;
+    %pushi/vec4 1, 0, 2;
+    %store/vec4 v0x15871bdf0_0, 0, 2;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x15871bd50_0, 0, 1;
+    %pushi/vec4 2, 0, 2;
+    %store/vec4 v0x15871bdf0_0, 0, 2;
+    %delay 10000, 0;
+    %vpi_call 2 38 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "texperiment5.v";
+    "./experiment5.v";

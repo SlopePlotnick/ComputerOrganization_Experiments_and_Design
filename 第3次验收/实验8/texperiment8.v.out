@@ -1,0 +1,63 @@
+#! /opt/homebrew/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x143608210 .scope module, "tb_test8" "tb_test8" 2 6;
+ .timescale -9 -12;
+v0x14361e0d0_0 .var "A", 15 0;
+v0x14361e190_0 .net "B", 31 0, L_0x14361e530;  1 drivers
+S_0x143608380 .scope module, "u_test8" "test8" 2 14, 3 1 0, S_0x143608210;
+ .timescale 0 0;
+    .port_info 0 /INPUT 16 "A";
+    .port_info 1 /OUTPUT 32 "B";
+v0x14360e100_0 .net "A", 15 0, v0x14361e0d0_0;  1 drivers
+v0x14361dea0_0 .net "B", 31 0, L_0x14361e530;  alias, 1 drivers
+v0x14361df40_0 .net *"_ivl_1", 0 0, L_0x14361e240;  1 drivers
+v0x14361dff0_0 .net *"_ivl_2", 15 0, L_0x14361e340;  1 drivers
+L_0x14361e240 .part v0x14361e0d0_0, 15, 1;
+LS_0x14361e340_0_0 .concat [ 1 1 1 1], L_0x14361e240, L_0x14361e240, L_0x14361e240, L_0x14361e240;
+LS_0x14361e340_0_4 .concat [ 1 1 1 1], L_0x14361e240, L_0x14361e240, L_0x14361e240, L_0x14361e240;
+LS_0x14361e340_0_8 .concat [ 1 1 1 1], L_0x14361e240, L_0x14361e240, L_0x14361e240, L_0x14361e240;
+LS_0x14361e340_0_12 .concat [ 1 1 1 1], L_0x14361e240, L_0x14361e240, L_0x14361e240, L_0x14361e240;
+L_0x14361e340 .concat [ 4 4 4 4], LS_0x14361e340_0_0, LS_0x14361e340_0_4, LS_0x14361e340_0_8, LS_0x14361e340_0_12;
+L_0x14361e530 .concat [ 16 16 0 0], v0x14361e0d0_0, L_0x14361e340;
+    .scope S_0x143608210;
+T_0 ;
+    %pushi/vec4 0, 0, 16;
+    %store/vec4 v0x14361e0d0_0, 0, 16;
+    %end;
+    .thread T_0;
+    .scope S_0x143608210;
+T_1 ;
+    %vpi_call 2 22 "$dumpfile", "experiment8_wave.vcd" {0 0 0};
+    %vpi_call 2 23 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x143608210 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x143608210;
+T_2 ;
+    %pushi/vec4 64599, 0, 16;
+    %store/vec4 v0x14361e0d0_0, 0, 16;
+    %vpi_call 2 29 "$display", "This is A %b", v0x14361e0d0_0 {0 0 0};
+    %delay 1000, 0;
+    %vpi_call 2 30 "$display", "This is B %b", v0x14361e190_0 {0 0 0};
+    %delay 10000, 0;
+    %pushi/vec4 3159, 0, 16;
+    %store/vec4 v0x14361e0d0_0, 0, 16;
+    %vpi_call 2 32 "$display", "This is A %b", v0x14361e0d0_0 {0 0 0};
+    %delay 1000, 0;
+    %vpi_call 2 33 "$display", "This is B %b", v0x14361e190_0 {0 0 0};
+    %delay 10000, 0;
+    %vpi_call 2 34 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "texperiment8.v";
+    "./experiment8.v";

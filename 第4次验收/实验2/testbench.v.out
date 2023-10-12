@@ -1,0 +1,133 @@
+#! /opt/homebrew/Cellar/icarus-verilog/11.0/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/11.0/lib/ivl/va_math.vpi";
+S_0x132e09580 .scope module, "test" "test" 2 3;
+ .timescale 0 0;
+v0x132e24120_0 .var "a", 0 0;
+v0x132e241c0_0 .var "b", 0 0;
+v0x132e24270_0 .var "clk", 0 0;
+v0x132e24320_0 .var "errors", 31 0;
+v0x132e243b0_0 .var "reset", 0 0;
+v0x132e24490_0 .var "s", 0 0;
+v0x132e24520 .array "testvectors", 0 10000, 31 0;
+v0x132e245b0_0 .var "vectornum", 31 0;
+v0x132e24660_0 .net "y", 0 0, L_0x132e24ab0;  1 drivers
+v0x132e24790_0 .var "ye", 0 0;
+E_0x132e113f0 .event negedge, v0x132e24270_0;
+E_0x132e0aab0 .event posedge, v0x132e24270_0;
+S_0x132e08220 .scope module, "dut" "mux2_112" 2 11, 3 1 0, S_0x132e09580;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "s";
+    .port_info 3 /OUTPUT 1 "y";
+P_0x132e0a300 .param/l "WITDH" 0 3 1, +C4<00000000000000000000000000000001>;
+v0x132e09770_0 .net *"_ivl_0", 31 0, L_0x132e24820;  1 drivers
+L_0x138078010 .functor BUFT 1, C4<0000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x132e23c60_0 .net *"_ivl_3", 30 0, L_0x138078010;  1 drivers
+L_0x138078058 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x132e23d00_0 .net/2u *"_ivl_4", 31 0, L_0x138078058;  1 drivers
+v0x132e23d90_0 .net *"_ivl_6", 0 0, L_0x132e24990;  1 drivers
+v0x132e23e20_0 .net "a", 0 0, v0x132e24120_0;  1 drivers
+v0x132e23ef0_0 .net "b", 0 0, v0x132e241c0_0;  1 drivers
+v0x132e23f90_0 .net "s", 0 0, v0x132e24490_0;  1 drivers
+v0x132e24030_0 .net "y", 0 0, L_0x132e24ab0;  alias, 1 drivers
+L_0x132e24820 .concat [ 1 31 0 0], v0x132e24490_0, L_0x138078010;
+L_0x132e24990 .cmp/eq 32, L_0x132e24820, L_0x138078058;
+L_0x132e24ab0 .functor MUXZ 1, v0x132e241c0_0, v0x132e24120_0, L_0x132e24990, C4<>;
+    .scope S_0x132e09580;
+T_0 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x132e24270_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x132e24270_0, 0, 1;
+    %delay 5, 0;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x132e09580;
+T_1 ;
+    %vpi_call 2 20 "$readmemb", "data.tv", v0x132e24520 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x132e245b0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x132e24320_0, 0, 32;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x132e243b0_0, 0, 1;
+    %delay 27, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x132e243b0_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x132e09580;
+T_2 ;
+    %wait E_0x132e0aab0;
+    %delay 1, 0;
+    %ix/getv 4, v0x132e245b0_0;
+    %load/vec4a v0x132e24520, 4;
+    %pad/u 4;
+    %split/vec4 1;
+    %store/vec4 v0x132e24790_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0x132e24490_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0x132e241c0_0, 0, 1;
+    %store/vec4 v0x132e24120_0, 0, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x132e09580;
+T_3 ;
+    %wait E_0x132e113f0;
+    %load/vec4 v0x132e243b0_0;
+    %inv;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.0, 8;
+    %load/vec4 v0x132e24660_0;
+    %load/vec4 v0x132e24790_0;
+    %cmp/ne;
+    %jmp/0xz  T_3.2, 6;
+    %load/vec4 v0x132e24120_0;
+    %load/vec4 v0x132e241c0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v0x132e24490_0;
+    %concat/vec4; draw_concat_vec4
+    %vpi_call 2 33 "$display", "Error : inputs = %b", S<0,vec4,u3> {1 0 0};
+    %vpi_call 2 34 "$display", "outputs = %b (%b expected)", v0x132e24660_0, v0x132e24790_0 {0 0 0};
+    %load/vec4 v0x132e24320_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x132e24320_0, 0, 32;
+    %jmp T_3.3;
+T_3.2 ;
+    %load/vec4 v0x132e24120_0;
+    %load/vec4 v0x132e241c0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v0x132e24490_0;
+    %concat/vec4; draw_concat_vec4
+    %vpi_call 2 38 "$display", "Right : inputs = %b", S<0,vec4,u3> {1 0 0};
+    %vpi_call 2 39 "$display", "outputs = %b (%b expected)", v0x132e24660_0, v0x132e24790_0 {0 0 0};
+T_3.3 ;
+    %load/vec4 v0x132e245b0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x132e245b0_0, 0, 32;
+    %ix/getv 4, v0x132e245b0_0;
+    %load/vec4a v0x132e24520, 4;
+    %cmpi/e 15, 15, 32;
+    %jmp/0xz  T_3.4, 6;
+    %vpi_call 2 43 "$display", "%d test completed with %d errors", v0x132e245b0_0, v0x132e24320_0 {0 0 0};
+    %vpi_call 2 45 "$finish" {0 0 0};
+T_3.4 ;
+T_3.0 ;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "./mux2_112.v";

@@ -1,0 +1,31 @@
+$date
+	Sat Apr 29 16:23:07 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_test8 $end
+$var wire 32 ! B [31:0] $end
+$var reg 16 " A [15:0] $end
+$scope module u_test8 $end
+$var wire 16 # A [15:0] $end
+$var wire 32 $ B [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b11111111111111111111110001010111 $
+b1111110001010111 #
+b1111110001010111 "
+b11111111111111111111110001010111 !
+$end
+#11000
+b110001010111 !
+b110001010111 $
+b110001010111 "
+b110001010111 #
+#22000
